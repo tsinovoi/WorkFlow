@@ -1,5 +1,15 @@
 WorkFlow::Application.routes.draw do
+ 
+
+  resources :sows
+
+
+  resources :pins
+
+
   devise_for :users
+  devise_for :admins
+  #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 
   root:to => 'pages#home'
   get 'form' => 'pages#form'

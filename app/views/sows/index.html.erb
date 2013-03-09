@@ -1,0 +1,19 @@
+<h1>Listing SoWs</h1>
+
+<table class="table table-responsive table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @sows %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New SoW', new_sow_path, class: "btn btn-primary btn-mini" %>

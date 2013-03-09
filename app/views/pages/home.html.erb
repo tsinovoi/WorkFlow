@@ -1,6 +1,7 @@
 <% if user_signed_in? %> 
-#Show Members Area
-<h1>You are in!</h1>
+	<%= render 'pages/userhome' %>
+<% elsif admin_signed_in? %> 
+	<%= render 'pages/adminhome' %>
 <% else %>
 
 	<div class="hero-unit">
@@ -10,6 +11,7 @@
 			</p>
 			<p>
 			  <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-primary btn-large" %>
+			   <%= link_to "Sign Up as Admin!", new_admin_registration_path, class: "btn btn-primary btn-danger btn-large" %>
 			</p>
 	</div>
 			<div class="row-fluid">
