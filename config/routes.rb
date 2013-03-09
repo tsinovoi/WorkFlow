@@ -1,4 +1,9 @@
 WorkFlow::Application.routes.draw do
+  root:to => 'pages#home'
+  get 'form' => 'pages#form'
+  get 'data' => 'pages#data'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
