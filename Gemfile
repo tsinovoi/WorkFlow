@@ -19,6 +19,7 @@ end
 
 gem 'jquery-rails', '2.0.2'
 gem 'devise'
+gem "cancan"
 gem 'simple_form'
 
 group :production do

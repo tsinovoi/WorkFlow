@@ -3,6 +3,7 @@
 
  
     <%= f.input :description, as: :text, input_html: { rows: "3"} %>
+    Owner: <%= f.label :owner, current_user.name %>
 
 
   <div class="form-actions">
