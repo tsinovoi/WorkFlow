@@ -1,4 +1,6 @@
 WorkFlow::Application.routes.draw do
+  devise_for :users
+
   root:to => 'pages#home'
   get 'form' => 'pages#form'
   get 'data' => 'pages#data'
