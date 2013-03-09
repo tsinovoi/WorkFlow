@@ -15,9 +15,9 @@
 	      <!-- Everything you want hidden at 940px or less, place within here -->
 	      <div class="nav-collapse collapse">
 	      	 <ul class="nav nav-pills">
-				  <li><%= link_to "Home", root_path %></li>
-				  <li><%= link_to "Form", form_path %></li>
-				  <li><%= link_to "Data", data_path %></li>
+	      	 	<% if user_signed_in? %> 
+					  <li><%= link_to "Home", root_path %></li>
+				<% end %>
 			</ul>
 			<ul class="nav pull-right">
 				<% if user_signed_in? %> 
