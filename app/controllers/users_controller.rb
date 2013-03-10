@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
+    #Authorize user
+    authorize! :read, @user
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -72,7 +75,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        if @user.admin?
         format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        else
+        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
