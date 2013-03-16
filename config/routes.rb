@@ -3,9 +3,6 @@ WorkFlow::Application.routes.draw do
 
   
 
-  resources :sows
-
-
   resources :pins
 
 

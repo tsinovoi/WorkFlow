@@ -11,20 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309230324) do
+ActiveRecord::Schema.define(:version => 20130316211601) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "creator_id"
+    t.integer  "assigned_to"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "assignments", ["assigned_to"], :name => "index_assignments_on_assigned_to"
+  add_index "assignments", ["creator_id", "assigned_to"], :name => "index_assignments_on_creator_id_and_assigned_to", :unique => true
+  add_index "assignments", ["creator_id"], :name => "index_assignments_on_creator_id"
 
   create_table "pins", :force => true do |t|
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "owner"
+    t.integer  "user_id"
   end
+
+  add_index "pins", ["user_id"], :name => "index_pins_on_user_id"
 
   create_table "sows", :force => true do |t|
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "project_name"
+    t.string   "contract_type"
+    t.string   "portfolio"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "creator_id"
+    t.integer  "assigned_to_id"
+    t.decimal  "value"
   end
+
+  add_index "sows", ["assigned_to_id"], :name => "index_sows_on_assigned_to_id"
+  add_index "sows", ["creator_id"], :name => "index_sows_on_creator_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

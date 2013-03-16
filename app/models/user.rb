@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :admin
   # attr_accessible :title, :body
 
+has_many :pins
+has_many :sows
+has_many :assigned_to, through: :assignments, source: "assigned_to"
 end

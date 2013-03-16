@@ -3,11 +3,14 @@
 		<div class="well">
  			<p>
 		  	<b>Description:</b>
-		 	 <%= @pin.description %>
-		 	 <%= @pin.owner %>
+		 	 <%= @pin.description %> </br>
+		 	 <b>Owner:</b>
+		 	 <%= @pin.user.name %>
 			</p>
-			<%= link_to 'Edit', edit_pin_path(@pin) %> |
-			<%= link_to 'Back', pins_path %>
+			<% if current_user == @pin.user %>
+				<%= link_to 'Edit', edit_pin_path(@pin) %> |
+				<%= link_to 'Back', pins_path %>
+			<% end %>
 		</div>
 	</div>
 </div>

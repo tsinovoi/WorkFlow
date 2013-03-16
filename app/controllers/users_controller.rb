@@ -18,6 +18,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+     #Authorize user
+    authorize! :read, @user
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -28,6 +31,10 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+
+     #Authorize user
+    authorize! :read, @user
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,10 +52,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+   
+
     if params[:user][:password].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
+
+ #Authorize user
+    authorize! :read, @user
 
     respond_to do |format|
       if @user.save
@@ -72,6 +84,8 @@ class UsersController < ApplicationController
       params[:user].delete(:current_password)
     end
 
+ #Authorize user
+    authorize! :read, @user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -93,6 +107,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+
+     #Authorize user
+    authorize! :read, @user
 
     respond_to do |format|
       format.html { redirect_to users_url }
