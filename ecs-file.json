@@ -1,0 +1,33 @@
+{
+  "container_definitions": [
+    {
+      "name": "app",
+      "image": "",
+      "environment": [
+        {
+          "name": "RACK_ENV",
+          "value": "production"
+        }
+      ],
+      "command": [
+        "bundle",
+        "exec",
+        "rails",
+        "s",
+        "-b",
+        "0.0.0.0"
+      ],
+      "port_mappings": [
+        {
+          "protocol": "tcp",
+          "container_port": 3000,
+          "host_port": 0
+        }
+      ],
+      "links": [
+        "db"
+      ]
+    }
+  ],
+  "family": "tsinovoiWorkFlow"
+}

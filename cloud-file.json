@@ -1,0 +1,34 @@
+{
+  "services": [
+    {
+      "name": "app",
+      "image": "",
+      "target_num_containers": 1,
+      "sequential_deployment": true,
+      "autorestart": "ALWAYS",
+      "autoredeploy": true,
+      "container_envvars": [
+        {
+          "key": "RACK_ENV",
+          "value": "production"
+        }
+      ],
+      "run_command": "rails s -b 0.0.0.0",
+      "container_ports": [
+        {
+          "protocol": "tcp",
+          "inner_port": 3000,
+          "published": true,
+          "outer_port": 4211
+        }
+      ],
+      "linked_to_service": [
+        {
+          "name": "db",
+          "to_service": "db"
+        }
+      ]
+    }
+  ],
+  "name": "tsinovoiWorkFlow"
+}
